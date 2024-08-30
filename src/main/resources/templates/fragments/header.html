@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<!-- fragments :: header -->
+	<header th:fragment="header">
+
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<!-- BRAND -->
+				<img th:src="@{/img/moo.png}" height="20" class=" me-3" />
+				<!-- MENU TOGGLER BUTTON -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- MENU NAVIGATION -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+						<!-- HOME BUTTON -->
+						<li class="nav-item">
+							<a class="nav-link" aria-disabled="true" aria-current="page" th:href="@{/}">Home</a>
+						</li>
+						<!-- LINK BUTTON -->
+						<li class="nav-item">
+							<a class="nav-link text-white" href="#">Movies</a>
+						</li>
+						<!-- LINK BUTTON -->
+						<li class="nav-item">
+							<a class="nav-link text-white" href="#">Music</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- // NAVBAR -->
+	</header>
+
+</body>
+
+</html>

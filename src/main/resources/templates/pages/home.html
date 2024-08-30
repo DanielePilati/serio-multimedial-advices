@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header}">
+	</header>
+
+	<!--main-->
+	<main class="bg-light">
+		<h1> sono la Homepage</h1>
+	</main>
+
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>

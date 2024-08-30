@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<!-- fragments :: head -->
+
+	<head th:fragment="head">
+		<!-- BOOTSTRAP CSS -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+		<!-- custom CSS -->
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<title>[[${title}]]</title>
+	</head>
+</body>
+
+</html>
