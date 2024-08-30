@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header('movies')}">
+	</header>
+
+	<!--main-->
+	<main class="bg-light">
+		<th:block th:if="${movies.size < 0}">
+			<div class="container-fluid text-center">
+				<h1>Ecco la lista dei film</h1>
+				<div class="row">
+					<div th:each="movie : ${movies}" class="card" style="width: 18rem;">
+						<img class="card-img-top" src="..." alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${movie.title}"></h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk
+								of the card's content.</p>
+							<a th:href="@{/movies}" class="btn btn-primary">Return</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</th:block>
+		<th:block th:unless="${movies.size < 0}">
+			<div th:replace="~{fragments/nofound :: nofound}">
+		</th:block>
+	</main>
+
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>
