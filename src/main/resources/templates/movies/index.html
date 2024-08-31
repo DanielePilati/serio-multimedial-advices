@@ -13,12 +13,12 @@
 
 	<!--main-->
 	<main class="bg-light">
-		<th:block th:if="${movies.size < 0}">
-			<div class="container-fluid text-center">
+		<div class="container-fluid text-center px-5">
+			<th:block th:if="${!movies.isEmpty()}">
 				<h1>Ecco la lista dei film</h1>
-				<div class="row">
-					<div th:each="movie : ${movies}" class="card" style="width: 18rem;">
-						<img class="card-img-top" src="..." alt="Card image cap">
+				<div class="row d-flex-wrap justify-content-center">
+					<div th:each="movie : ${movies}" class="card col-3" style="width: 18rem;">
+						<img class="card-img-top" th:src="@{${movie.cover}}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title" th:text="${movie.title}"></h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -27,11 +27,11 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</th:block>
-		<th:block th:unless="${movies.size < 0}">
-			<div th:replace="~{fragments/nofound :: nofound}">
-		</th:block>
+			</th:block>
+			<th:block th:unless="${!movies.isEmpty()}">
+				<div th:replace="~{fragments/nofound :: nofound}">
+			</th:block>
+		</div>
 	</main>
 
 	<!--footer-->

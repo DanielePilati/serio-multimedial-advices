@@ -1,5 +1,6 @@
 package org.web.app.java.spring.serio.multimedial.advices.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,14 +15,19 @@ public class Movie {
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "title", nullable = false)
 	private String title;
 	
+	@Column(name = "description", nullable = true, columnDefinition = "LONGTEXT") 
 	private String description;
 	
-	private String type;
+	@Column(name = "gender", nullable = true, columnDefinition = "LONGTEXT") 	
+	private String gender;
 	
+	@Column(name = "cover", nullable = true, columnDefinition = "LONGTEXT") 
 	private String cover;
 	
+	@Column(name = "trailer", nullable = true, columnDefinition = "LONGTEXT") 
 	private String trailer;
 	
 	public Integer getId() {
@@ -48,14 +54,6 @@ public class Movie {
 		this.description = description;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public String getCover() {
 		return cover;
 	}
@@ -70,6 +68,14 @@ public class Movie {
 
 	public void setTrailer(String trailer) {
 		this.trailer = trailer;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	
