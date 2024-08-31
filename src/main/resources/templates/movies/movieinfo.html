@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header('movies')}">
+	</header>
+
+	<!--main-->
+	<main>
+		<div class="container-fluid px-5">
+			<div class="row wrap">
+				<div class="col-12 my-2">
+					<h1 th:text="${movie.title}"></h1>
+				</div>
+				<div class="col-6">
+					<img th:src="@{${movie.cover}}" alt="Card image cap">
+				</div>
+				<div class="col-6 embed-responsive embed-responsive-16by9 ">
+					<iframe class="h-100 w-100 d-inline-block embed-responsive-item " th:src="@{${movie.trailer}}"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<div class="col-12 bg-light mt-3 p-3">
+					<h5>Trama: </h5>
+					<p th:text="${movie.description}"></p>
+					<h6 class="d-inline"> Genere: </h6>
+					<p th:text="${movie.gender}" class="d-inline"></p><br>
+					<h6 class="d-inline"> Data di Uscita: </h6>
+					<p th:text="${movie.date}" class="d-inline"></p><br>
+					<h6 class="d-inline"> Regista: </h6>
+					<p th:text="${movie.producer}" class="d-inline"></p>
+				</div>
+				<a th:href="@{/movies}" class="btn btn-dark mt-3">Return</a>
+			</div>
+		</div>
+	</main>
+
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>

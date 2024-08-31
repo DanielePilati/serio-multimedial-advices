@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header('songs')}">
+	</header>
+
+	<!--main-->
+	<main>
+		<div class="container-fluid px-5">
+			<th:block th:if="${!songs.isEmpty()}">
+				<div class="row d-flex-wrap justify-content-center m-3">
+					<table class="table table-striped table-dark">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Title</th>
+								<th scope="col">Artist</th>
+								<th scope="col">Album</th>
+								<th scope="col">Time</th>
+								<th scope="col">Play</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="song : ${songs}">
+								<th scope="row" th:text="${song.id}"></th>
+								<td th:text="${song.title}"></td>
+								<td th:text="${song.artist}"></td>
+								<td th:text="${song.album}"></td>
+								<td th:text="${song.duration}"></td>
+								<td class="col-2">
+									<audio controls preload>
+										<source
+											src="" >
+									</audio>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</th:block>
+			<th:block th:unless="${!songs.isEmpty()}">
+				<div th:replace="~{fragments/nofound :: nofound(${title})}">
+			</th:block>
+		</div>
+	</main>
+
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>

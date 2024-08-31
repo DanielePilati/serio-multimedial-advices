@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class Movie {
 	
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "title", nullable = false)
@@ -30,6 +30,28 @@ public class Movie {
 	@Column(name = "trailer", nullable = true, columnDefinition = "LONGTEXT") 
 	private String trailer;
 	
+	@Column(name = "production_date", nullable = true)
+	private String date;
+	
+	@Column(name = "producer", nullable = true)
+	private String producer;
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	}
+
 	public Integer getId() {
 		return id;
 	}

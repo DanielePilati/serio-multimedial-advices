@@ -12,24 +12,27 @@
 	</header>
 
 	<!--main-->
-	<main class="bg-light">
-		<div class="container-fluid text-center px-5">
+	<main >
+		<div class="container-fluid px-5">
 			<th:block th:if="${!movies.isEmpty()}">
-				<h1>Ecco la lista dei film</h1>
-				<div class="row d-flex-wrap justify-content-center">
-					<div th:each="movie : ${movies}" class="card col-3" style="width: 18rem;">
+				<div class="row d-flex-wrap justify-content-center m-3">
+					<!-- card -->
+					<div th:each="movie : ${movies}" class="card p-0 col-3 " style="width: 18rem;" >
 						<img class="card-img-top" th:src="@{${movie.cover}}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title" th:text="${movie.title}"></h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of the card's content.</p>
-							<a th:href="@{/movies}" class="btn btn-primary">Return</a>
+							<h6 class="card-subtitle" th:text="${movie.gender}"></h6>
+							<p class="card-text" th:text="${movie.description}"></p>
+							<a th:href="@{/movies/movieinfo/{id}(id = ${movie.id})}" class="btn btn-dark">More info</a>
+							<th:block th:if="${movie.trailer != null}">
+								<a th:href="@{${movie.trailer}}" class="btn btn-dark" th:target="_blank">Trailer</a>
+							</th:block>
 						</div>
 					</div>
 				</div>
 			</th:block>
 			<th:block th:unless="${!movies.isEmpty()}">
-				<div th:replace="~{fragments/nofound :: nofound}">
+				<div th:replace="~{fragments/nofound :: nofound(${title})}">
 			</th:block>
 		</div>
 	</main>

@@ -3,8 +3,8 @@
 
 <body>
 	<!-- fragments :: nofound -->
-	<div th:fragment="nofound" class="text center">
-		<h1>No [[${title}]] Found</h1>
+	<div th:fragment="nofound(what)">
+		<h1 class="text center"> <b> [[${what}]] </b> Not Found </h1>
 	</div>
 </body>
 
