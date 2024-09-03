@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<!-- fragments :: showsongs -->
+	<div th:fragment="showsongs" class="row d-flex-wrap justify-content-center m-3">
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Title</th>
+					<th scope="col">Artist</th>
+					<th scope="col">Album</th>
+					<th scope="col">Time</th>
+					<th scope="col">Play</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="song : ${songs}">
+					<th scope="row" th:text="${song.id}"></th>
+					<td th:text="${song.title}"></td>
+					<td th:text="${song.artist}"></td>
+					<td th:text="${song.album}"></td>
+					<td th:text="${song.duration}"></td>
+					<td class="col-2">
+						<audio controls preload>
+							<source src="">
+						</audio>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

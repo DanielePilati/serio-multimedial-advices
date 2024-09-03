@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header('search')}">
+	</header>
+
+	<!--main-->
+	<main>
+		<h2 class="text-center  mt-2"> Your Resarch: <b>[[${word}]]</b></h2>
+		<hr>
+		<div class="card text-center">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="true">Movies</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link-dark" th:href="@{/search/show/songs/{word}(word = ${word})}">Music</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body">
+				<th:block th:if="${!movies.isEmpty()}">
+					<h2 class="text-center">Movies</h2>
+					<div th:replace="~{fragments/showmovies :: showmovies}">
+				</th:block>
+				<th:block th:unless="${!movies.isEmpty()}">
+					<div th:replace="~{fragments/nofound :: nofound('Movies')}">
+				</th:block>
+				<a th:href="@{/movies}" class="btn btn-dark">Return Movies</a>
+			</div>
+		</div>
+	</main>
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>

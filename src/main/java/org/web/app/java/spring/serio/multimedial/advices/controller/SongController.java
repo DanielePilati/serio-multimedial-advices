@@ -25,6 +25,8 @@ public class SongController {
 		model.addAttribute("title", "Songs");
 
 		return "/songs/index";
-	}	
+	}
+	
+
 
 }

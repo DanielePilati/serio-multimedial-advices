@@ -31,7 +31,7 @@ public class Song {
 	private String cover;
 		
 	@Column(name = "duration", nullable = true)
-	private Double duration;
+	private String duration;
 
 	public Integer getId() {
 		return id;
@@ -74,11 +74,11 @@ public class Song {
 	}
 
 
-	public Double getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Double duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	public String getAlbum() {

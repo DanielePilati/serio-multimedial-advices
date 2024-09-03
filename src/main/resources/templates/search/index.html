@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments/head :: head}">
+	</link>
+</head>
+
+<body>
+	<!--header-->
+	<header th:replace="~{fragments/header :: header('search')}">
+	</header>
+
+	<!--main-->
+	<main>
+		<th:block th:if="${word.isEmpty()}">
+			<h2 class="text-center mt-2">Please write a word to search</h2>
+		</th:block>
+		<th:block th:unless="${word.isEmpty()}">
+			<h2 class="text-center mt-2"> Your Resarch: <b>[[${word}]]</b></h2>
+			<hr>
+			<div class="container flex">
+				<div class="row">
+					<!--mmovies-->
+					<th:block th:unless="${!movies.isEmpty()}">
+						<div th:replace="~{fragments/nofound :: nofound(${'Movies'})}"></div>
+						<a class="btn btn-dark mt-2" th:href="@{/movies}">Return to Movies </a>
+					</th:block>
+					<th:block th:if="${!movies.isEmpty()}">
+						<a class="btn btn-dark mt-2" th:href="@{/search/show/movies/{word}(word = ${word})}"> Movies </a>
+					</th:block>
+					<hr class="mt-3">
+					<!--music-->
+					<th:block th:unless="${!songs.isEmpty()}">
+						<div th:replace="~{fragments/nofound :: nofound(${'Music'})}"></div>
+							<a class="btn btn-dark mt-2" th:href="@{/songs}">Return to Music </a>
+					</th:block>
+					<th:block th:if="${!songs.isEmpty()}">
+						<a class="btn btn-dark mt-2" th:href="@{/search/show/songs/{word}(word = ${word})}"> Songs </a>
+					</th:block>
+				</div>
+			</div>
+		</th:block>
+
+	</main>
+	<!--footer-->
+	<footer th:replace="~{fragments/footer :: footer}">
+
+	</footer>
+</body>
+<!--scripts-->
+<th:block th:replace="~{fragments/scripts :: scripts}">
+	</th>
+
+</html>

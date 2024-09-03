@@ -15,21 +15,7 @@
 	<main >
 		<div class="container-fluid px-5">
 			<th:block th:if="${!movies.isEmpty()}">
-				<div class="row d-flex-wrap justify-content-center m-3">
-					<!-- card -->
-					<div th:each="movie : ${movies}" class="card p-0 col-3 " style="width: 18rem;" >
-						<img class="card-img-top" th:src="@{${movie.cover}}" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${movie.title}"></h5>
-							<h6 class="card-subtitle" th:text="${movie.gender}"></h6>
-							<p class="card-text" th:text="${movie.description}"></p>
-							<a th:href="@{/movies/movieinfo/{id}(id = ${movie.id})}" class="btn btn-dark">More info</a>
-							<th:block th:if="${movie.trailer != null}">
-								<a th:href="@{${movie.trailer}}" class="btn btn-dark" th:target="_blank">Trailer</a>
-							</th:block>
-						</div>
-					</div>
-				</div>
+				<div th:replace="~{fragments/showmovies :: showmovies}">
 			</th:block>
 			<th:block th:unless="${!movies.isEmpty()}">
 				<div th:replace="~{fragments/nofound :: nofound(${title})}">
